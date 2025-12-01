@@ -66,6 +66,64 @@ const carController = {
             });
 
         }
+    },
+    update: async(req,res) => {
+        try {
+
+        const carroID = req.params.id;
+        const {marca, modelo, ano, cor, quilometragem, restaurado, ativo} = req.body;
+        const buscarCarro = await Carros.findByPk(carroID);
+
+        if(!buscarCarro) {
+            return res.status(404).json({
+                message: "Carro não encontrado",
+            });
+        }
+
+        await buscarCarro.update(
+            {marca, modelo, ano, cor, quilometragem, restaurado, ativo}
+        );
+
+        res.status(200).json({
+            message: "Carro atualizado",
+            data: buscarCarro
+        });
+
+        } catch(error) {
+
+            res.status(500).json({
+                message: "Erro ao atualizar carro",
+                error: error.message
+            });
+
+        }
+    },
+    delete: async(req,res) => {
+        try {
+
+            const carroId = req.params.id;
+            const buscarCarro = await Carros.findByPk(carroId);
+
+            if(!buscarCarro) {
+                return res.status(404).json({
+                    message: "Carro não encontrado", 
+                });
+            }
+            
+            buscarCarro.destroy();
+           
+            res.status(200).json({
+                message: "Carro deletado com sucesso",
+            });
+
+        } catch(error) {
+
+            res.status(500).json({
+                message: "Erro ao deletar carro",
+                error: error.message
+            });
+
+        }
     }
 
 }

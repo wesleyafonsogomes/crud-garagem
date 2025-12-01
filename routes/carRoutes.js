@@ -6,10 +6,9 @@ router.post("/add", carController.create);
 
 router.get("/todos", carController.getAll);
 
-
 router.get("/:id", carController.getOne);
 
-
+router.put("/:id", carController.update);
 
 
 
