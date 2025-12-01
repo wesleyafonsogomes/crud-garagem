@@ -10,6 +10,8 @@ router.get("/:id", carController.getOne);
 
 router.put("/:id", carController.update);
 
+router.delete("/:id", carController.delete);
+
 
 
 

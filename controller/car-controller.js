@@ -54,7 +54,7 @@ const carController = {
             const buscarCarro = await Carros.findByPk(carroID);
 
             res.status(200).json({
-                message: `Carro ID: $${carroID} encontrado!`,
+                message: `Carro ID: ${carroID} encontrado!`,
                 data: buscarCarro
             });
 
@@ -110,7 +110,7 @@ const carController = {
                 });
             }
             
-            buscarCarro.destroy();
+            await buscarCarro.destroy();
            
             res.status(200).json({
                 message: "Carro deletado com sucesso",
