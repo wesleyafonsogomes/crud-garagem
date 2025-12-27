@@ -1,0 +1,38 @@
+<div class="split-container">
+    <div class="split-image" style="background-image: url('{{carro.imagemURL}}');">
+        <a href="/carros" class="floating-back">← Voltar</a>
+    </div>
+
+    <div class="split-content">
+        <div class="content-wrapper">
+            <header>
+                <span class="eyebrow">{{carro.marca}}</span>
+                <h1>{{carro.modelo}}</h1>
+            </header>
+
+            <div class="info-grid">
+                <div class="info-group">
+                    <label>Ano</label>
+                    <p>{{carro.ano}}</p>
+                </div>
+                <div class="info-group">
+                    <label>Avaliação</label>
+                    <p class="red-text">R$ {{carro.preco}}</p>
+                </div>
+            </div>
+
+            <div class="description">
+                <p>Este exemplar faz parte da curadoria exclusiva Garagem Matrix, selecionado por sua originalidade e estado de conservação impecável.</p>
+            </div>
+
+            <div class="actions-group">
+                <a href="/carros/edit/{{carro.id}}" class="btn-main">Editar Registro</a>
+                
+                <form action="/carros/remove" method="POST">
+                    <input type="hidden" name="id" value="{{carro.id}}">
+                    <button type="submit" class="btn-outline" onclick="return confirm('Deseja excluir?')">Remover</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

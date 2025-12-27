@@ -1,0 +1,40 @@
+<section class="acervo-container">
+    <div class="acervo-header">
+        <h2>Nosso <span>Acervo</span></h2>
+        <p>Relíquias selecionadas com rigor técnico e histórico.</p>
+    </div>
+
+    <div class="carros-grid">
+        {{#each carros}}
+            <div class="carro-card">
+                <div class="carro-actions">
+                    <a href="/carros/edit/{{id}}" class="btn-action edit" title="Editar">✎</a>
+                    
+                    <form action="/carros/remove" method="POST" style="display: inline;">
+                        <input type="hidden" name="id" value="{{id}}">
+                        <button type="submit" class="btn-action remove" onclick="return confirm('Deseja remover este clássico?')">✕</button>
+                    </form>
+                </div>
+
+                <div class="carro-img" style="background-image: url('{{imagemURL}}');">
+                    {{#unless imagemURL}}
+                        <div class="no-img">Sem Imagem</div>
+                    {{/unless}}
+                </div>
+
+                <div class="carro-info">
+                    <span class="carro-ano">{{ano}}</span>
+                    <h3>{{marca}} {{modelo}}</h3>
+                    <p class="carro-preco">R$ {{preco}}</p>
+                    <a href="/carros/{{id}}" class="btn-detalhes">Ver Ficha Técnica</a>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+
+    {{#unless carros}}
+        <div class="empty-msg">
+            <p>A garagem está vazia. <a href="/carros/add">Adicione o primeiro clássico.</a></p>
+        </div>
+    {{/unless}}
+</section>

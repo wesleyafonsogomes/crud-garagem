@@ -1,0 +1,49 @@
+<section class="edit-container">
+    <div class="edit-split">
+        <div class="edit-visual" style="background-image: url('{{carro.imagemURL}}');">
+            <div class="visual-overlay">
+                <span>Editando Registro</span>
+                <h2>{{carro.marca}} {{carro.modelo}}</h2>
+            </div>
+        </div>
+
+        <div class="edit-form-box">
+            <header class="form-header">
+                <a href="/carros/{{carro.id}}" class="btn-cancel">✕ Cancelar</a>
+                <h1>Atualizar <span>Ficha</span></h1>
+            </header>
+
+            <form action="/carros/update" method="POST" class="matrix-form">
+                <input type="hidden" name="id" value="{{carro.id}}">
+
+                <div class="form-group">
+                    <label>Marca</label>
+                    <input type="text" name="marca" value="{{carro.marca}}" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Modelo</label>
+                    <input type="text" name="modelo" value="{{carro.modelo}}" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ano</label>
+                        <input type="text" name="ano" value="{{carro.ano}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Preço (R$)</label>
+                        <input type="text" name="preco" value="{{carro.preco}}" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>URL da Imagem</label>
+                    <input type="text" name="imagemURL" value="{{carro.imagemURL}}" required>
+                </div>
+
+                <button type="submit" class="btn-update">Salvar Alterações</button>
+            </form>
+        </div>
+    </div>
+</section>
